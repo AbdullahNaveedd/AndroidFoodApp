@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg_calendar_popup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLast7Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last 7 days"
+            android:padding="15dp"
+            android:background="@drawable/btn_design"
+            android:backgroundTint="#2C2C2C"
+            android:textColor="#FFFFFF"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/btnLast30Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last 30 days"
+            android:padding="15dp"
+            android:background="@drawable/btn_design"
+            android:backgroundTint="#2C2C2C"
+            android:textColor="#FFFFFF"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/btnLast3Months"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last 3 months"
+            android:padding="15dp"
+            android:background="@drawable/btn_design"
+            android:backgroundTint="#2C2C2C"
+            android:textColor="#FFFFFF"
+            android:layout_margin="4dp"/>
+    </LinearLayout>
+
+    <com.github.pelmenstar1.rangecalendar.RangeCalendarView
+        android:id="@+id/rangeCalendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        />
+
+    <Button
+        android:id="@+id/btnConfirmSelection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirm Selection"
+        android:textColor="#000000"
+        android:background="@drawable/btn_design"
+        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="12dp"/>
+</LinearLayout>

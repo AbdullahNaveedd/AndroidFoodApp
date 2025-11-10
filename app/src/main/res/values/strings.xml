@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FoodApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="my_underlined_text"> <u>Resend</u> </string>
+    <string name="withdraw">Withdraw</string>
+    <string name="default_web_client_id">1059610679636-0kfgu82f8qeoadpj3mh8056370c15rvh.apps.googleusercontent.com</string>
+</resources>

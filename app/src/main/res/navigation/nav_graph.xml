@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragement">
+
+    <fragment
+        android:id="@+id/splashFragement"
+        android:name="com.example.foodapp.screens.splash.SplashFragement"
+        android:label="fragment_splash_fragement"
+        tools:layout="@layout/fragment_splash_fragement" >
+        <action
+            android:id="@+id/action_splashFragement_to_login"
+            app:destination="@id/login" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.example.foodapp.screens.auth.Login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signup" />
+        <action
+            android:id="@+id/action_login_to_home3"
+            app:destination="@id/home3" />
+        <action
+            android:id="@+id/action_login_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/signup"
+        android:name="com.example.foodapp.screens.auth.Signup"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signup_to_home3"
+            app:destination="@id/home3" />
+        <action
+            android:id="@+id/action_signup_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.example.foodapp.screens.home.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home3_to_add_item2"
+            app:destination="@id/add_item2" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPassword"
+        android:name="com.example.foodapp.screens.auth.ForgotPassword"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPassword_to_verification"
+            app:destination="@id/verification" />
+        <action
+            android:id="@+id/action_forgotPassword_to_login"
+            app:destination="@id/login" />
+    </fragment>
+    <fragment
+        android:id="@+id/verification"
+        android:name="com.example.foodapp.screens.auth.Verification"
+        android:label="fragment_verification"
+        tools:layout="@layout/fragment_verification" >
+        <action
+            android:id="@+id/action_verification_to_forgotPassword"
+            app:destination="@id/forgotPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile3"
+        android:name="com.example.foodapp.screens.Profile.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+        <action
+            android:id="@+id/action_profile3_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_profile3_to_calendar"
+            app:destination="@id/calendar" />
+        <action
+            android:id="@+id/action_profile3_to_profileInfoScreen"
+            app:destination="@id/profileInfoScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_item2"
+        android:name="com.example.foodapp.screens.additem.Add_item"
+        android:label="fragment_add_item"
+        tools:layout="@layout/fragment_add_item" >
+        <action
+            android:id="@+id/action_add_item2_to_menu"
+            app:destination="@id/menu"
+            app:popUpTo="@id/add_item2"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/menu"
+        android:name="com.example.foodapp.screens.menu.Menu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" />
+
+    <fragment
+        android:id="@+id/calendar"
+        android:name="com.example.foodapp.screens.calendar.Calendar"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" >
+
+        <action
+            android:id="@+id/action_calendar_to_profile3"
+            app:destination="@id/profile3" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileInfoScreen"
+        android:name="com.example.foodapp.screens.Profile.ProfileInfoScreen"
+        android:label="fragment_profile_info_screen"
+        tools:layout="@layout/fragment_profile_info_screen" />
+
+</navigation>
