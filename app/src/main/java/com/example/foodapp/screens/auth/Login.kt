@@ -29,13 +29,16 @@ import com.facebook.login.LoginResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 
 class Login : Fragment() {
 
-    private lateinit var Signup:TextView
+    private lateinit var Signup: TextView
     private lateinit var Login: Button
     private lateinit var forgotpassword: TextView
     private lateinit var showpassword: ImageView
@@ -52,6 +55,8 @@ class Login : Fragment() {
     private lateinit var twitter: ImageView
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var callbackManager: CallbackManager
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
 
     private val googleLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -78,7 +83,8 @@ class Login : Fragment() {
             if (idToken != null) {
                 progressBar.visibility = View.VISIBLE
 
-                val credential = com.google.firebase.auth.GoogleAuthProvider.getCredential(idToken, null)
+                val credential =
+                    com.google.firebase.auth.GoogleAuthProvider.getCredential(idToken, null)
 
                 auth.signInWithCredential(credential)
                     .addOnCompleteListener { authTask ->
@@ -103,7 +109,8 @@ class Login : Fragment() {
                                             "Google Sign-In Successful!",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        val prefs = requireActivity().getSharedPreferences("LoginPrefs", 0)
+                                        val prefs =
+                                            requireActivity().getSharedPreferences("LoginPrefs", 0)
                                         prefs.edit().putBoolean("isLoggedIn", true).apply()
 
                                         if (isAdded) {
@@ -134,7 +141,11 @@ class Login : Fragment() {
                     }
             } else {
                 progressBar.visibility = View.GONE
-                Toast.makeText(requireContext(), "ID Token is null. Check Firebase configuration.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "ID Token is null. Check Firebase configuration.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         } catch (e: Exception) {
@@ -254,7 +265,11 @@ class Login : Fragment() {
                         handleTwitterSignInSuccess(authResult.user)
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Twitter login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Twitter login failed: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
             } else {
                 auth.startActivityForSignInWithProvider(requireActivity(), provider.build())
@@ -262,7 +277,11 @@ class Login : Fragment() {
                         handleTwitterSignInSuccess(authResult.user)
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(requireContext(), "Twitter login failed: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "Twitter login failed: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
             }
         }
@@ -337,6 +356,7 @@ class Login : Fragment() {
                 }
         }
     }
+
     private fun initGoogleLogin() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
@@ -346,20 +366,22 @@ class Login : Fragment() {
 
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
     }
-    private fun facebooklogin()
-    {
+
+    private fun facebooklogin() {
         LoginManager.getInstance().logInWithReadPermissions(
             this,
             listOf("email", "public_profile")
         )
 
-        LoginManager.getInstance().registerCallback(callbackManager,
+        LoginManager.getInstance().registerCallback(
+            callbackManager,
             object : FacebookCallback<LoginResult> {
                 override fun onSuccess(r: LoginResult) {
                     val request = GraphRequest.newMeRequest(r.accessToken) { obj, _ ->
                         val email = obj?.getString("email")
                         val name = obj?.getString("name")
-                        Toast.makeText(requireContext(), "FB: $email $name", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "FB: $email $name", Toast.LENGTH_LONG)
+                            .show()
                     }
                     val b = Bundle()
                     b.putString("fields", "id,name,email")
@@ -376,6 +398,7 @@ class Login : Fragment() {
                 }
             })
     }
+
     private fun handleTwitterSignInSuccess(user: com.google.firebase.auth.FirebaseUser?) {
         if (user == null) {
             Toast.makeText(requireContext(), "No user data found", Toast.LENGTH_SHORT).show()
@@ -392,7 +415,8 @@ class Login : Fragment() {
         db.collection("users").document(user.uid)
             .set(userMap, com.google.firebase.firestore.SetOptions.merge())
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Twitter Sign-In Successful!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Twitter Sign-In Successful!", Toast.LENGTH_SHORT)
+                    .show()
 
                 val prefs = requireActivity().getSharedPreferences("LoginPrefs", 0)
                 prefs.edit().putBoolean("isLoggedIn", true).apply()
@@ -406,10 +430,28 @@ class Login : Fragment() {
                 )
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Firestore error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "Firestore error: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
+    override fun onResume() {
+        super.onResume()
+        logScreenViewFirebaseEvent()
+    }
+
+    private fun logScreenViewFirebaseEvent() {
+
+        val analytics = Firebase.analytics
+        val bundle = Bundle().apply {
+            putString(FirebaseAnalytics.Param.SCREEN_NAME, "Login Screen")
+            putString(FirebaseAnalytics.Param.SCREEN_CLASS, "LoginFragment")
+        }
+        analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+    }
 
 
 }
