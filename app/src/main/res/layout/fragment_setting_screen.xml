@@ -7,17 +7,48 @@
     android:background="@color/black"
     tools:context=".screens.Profile.SettingScreen">
 
+
     <TextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Setting Screen"
+        android:text="0"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />
+
+    <Button
+        android:id="@+id/increment"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="+"
+        android:textSize="22dp"
+        android:backgroundTint="@color/additemnamebg"
+        android:background="@drawable/btn_design"
+        app:layout_constraintEnd_toStartOf="@+id/decrement"
+        app:layout_constraintTop_toBottomOf="@id/text"
+        app:layout_constraintStart_toStartOf="@id/text"
+        />
+
+    <Button
+        android:id="@+id/decrement"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="-"
+        android:textSize="22dp"
+        android:background="@drawable/btn_design"
+        android:backgroundTint="@color/additemnamebg"
+        app:layout_constraintEnd_toEndOf="@+id/text"
+        app:layout_constraintStart_toEndOf="@+id/increment"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

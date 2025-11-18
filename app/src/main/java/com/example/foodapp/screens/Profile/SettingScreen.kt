@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.foodapp.R
 import com.example.foodapp.databinding.FragmentSettingScreenBinding
 
@@ -12,6 +14,7 @@ class SettingScreen : Fragment() {
 
     private var _binding: FragmentSettingScreenBinding? = null
     private val binding get() = _binding!!
+    private val counter: Counter by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +32,21 @@ class SettingScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        counter.number.observe(viewLifecycleOwner) { value ->
+            binding.text.text = value.toString()
 
+        binding.increment.setOnClickListener {
+            counter.increment()
+            }
+            binding.decrement.setOnClickListener {
+                if ((counter.number.value ?: 0) > 0) {
+                    counter.decrement()
+                }
+                else
+                {
+                    Toast.makeText(requireContext(),"Number is Equal to Zero No Decremnt",Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
