@@ -63,6 +63,8 @@ dependencies {
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.6.1")
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.facebook.android:facebook-login:16.1.3")
+    implementation("androidx.media3:media3-exoplayer:1.8.0")
+    implementation("androidx.media3:media3-ui:1.8.0")
 
 
     implementation(libs.androidx.core.ktx)
