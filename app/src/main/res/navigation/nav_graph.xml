@@ -88,6 +88,10 @@
         <action
             android:id="@+id/action_profile3_to_profileInfoScreen"
             app:destination="@id/profileInfoScreen" />
+
+        <action android:id="@id/action_profile3_to_settingScreen"
+            app:destination="@id/settingScreen"
+            />
     </fragment>
     <fragment
         android:id="@+id/add_item2"
@@ -122,5 +126,10 @@
         android:name="com.example.foodapp.screens.Profile.ProfileInfoScreen"
         android:label="fragment_profile_info_screen"
         tools:layout="@layout/fragment_profile_info_screen" />
+    <fragment
+        android:id="@+id/settingScreen"
+        android:name="com.example.foodapp.screens.Profile.SettingScreen"
+        android:label="fragment_setting_screen"
+        tools:layout="@layout/fragment_setting_screen" />
 
 </navigation>

@@ -72,6 +72,10 @@ class Profile : Fragment() {
                    requireActivity().findNavController(R.id.nav_host_fragment).
                    navigate(R.id.profileInfoScreen)
                 }
+                if(item.title == "Settings")
+                {
+                requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.settingScreen)
+                }
 
 
         }

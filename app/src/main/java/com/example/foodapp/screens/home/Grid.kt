@@ -49,11 +49,12 @@ class Grid : Fragment() {
         tabLayout = view.findViewById(R.id.tabLayout)
 
         val sliderItems = listOf(
-            HomeModel(R.mipmap.ic_launcher,"Chicken","$30" ,"Islmabad I-8 Markaz" ,"5.6" ,"(8 Reviews)" ,"Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages.", listOf(
-                Ingredient(R.mipmap.ic_launcher, "Chicken"),
-                Ingredient(R.mipmap.ic_launcher, "Onion"),
-                Ingredient(R.mipmap.ic_launcher, "Garlic"),
-                Ingredient(R.mipmap.ic_launcher, "Onion"),
+            HomeModel(R.drawable.food1,"Chicken","$30" ,"Islmabad I-8 Markaz" ,"5.6" ,"(8 Reviews)" ,"Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages.", listOf(
+                Ingredient(R.drawable.chicken, "Chicken"),
+                Ingredient(R.drawable.onion, "Onion"),
+                Ingredient(R.drawable.garlic, "Garlic"),
+                Ingredient(R.drawable.onion, "Onion"),
+                Ingredient(R.drawable.pappers, "Pappers"),
             )),
             HomeModel(R.drawable.food2,"Haleem","$40","Islmabad I-10 Markaz" ,"5.2" ,"(18 Reviews)","A slow-cooked delicacy made with wheat, lentils, and meat, simmered to perfection. Rich, hearty, and full of nutrients",
                 listOf(
