@@ -17,7 +17,6 @@ class SettingScreen : Fragment() {
     private val counter: Counter by viewModels()
     private val playerViewModel: PlayerViewModel by viewModels()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,8 +35,6 @@ class SettingScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         counter.number.observe(viewLifecycleOwner) { value ->
             binding.text.text = value.toString()
-
-
             binding.increment.setOnClickListener {
                 counter.increment()
             }
@@ -52,9 +49,7 @@ class SettingScreen : Fragment() {
                     ).show()
                 }
             }
-
         }
-
     }
 
     override fun onStart() {
@@ -70,7 +65,7 @@ class SettingScreen : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        playerViewModel.saveState()
+        playerViewModel.updatePosition()
         playerViewModel.pausePlayer()
     }
 
