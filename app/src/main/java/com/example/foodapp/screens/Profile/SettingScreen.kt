@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.foodapp.databinding.FragmentSettingScreenBinding
+import com.example.foodapp.screens.Constant.Constant
 
 class SettingScreen : Fragment() {
 
@@ -44,7 +45,7 @@ class SettingScreen : Fragment() {
                 } else {
                     Toast.makeText(
                         requireContext(),
-                        "Number is Equal to Zero No Decremnt",
+                        Constant.ZeroValue,
                         Toast.LENGTH_SHORT
                     ).show()
                 }

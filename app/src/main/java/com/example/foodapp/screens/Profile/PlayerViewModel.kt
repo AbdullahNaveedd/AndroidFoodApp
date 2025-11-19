@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.common.MediaItem
+import com.example.foodapp.screens.Constant.Constant
 import kotlinx.coroutines.flow.MutableStateFlow
 
 
@@ -19,7 +20,7 @@ class PlayerViewModel : ViewModel() {
         if (player == null) {
             player = ExoPlayer.Builder(context).build().apply {
                 val mediaItem = MediaItem.fromUri(
-                    "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"
+                    Constant.VideoUrl
                 )
                 setMediaItem(mediaItem)
                 prepare()
