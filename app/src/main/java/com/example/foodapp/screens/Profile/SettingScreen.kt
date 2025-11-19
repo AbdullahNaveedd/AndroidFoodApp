@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.media3.exoplayer.ExoPlayer
-import com.example.foodapp.R
-import androidx.media3.common.MediaItem
 import com.example.foodapp.databinding.FragmentSettingScreenBinding
 
 class SettingScreen : Fragment() {
@@ -18,7 +15,7 @@ class SettingScreen : Fragment() {
     private var _binding: FragmentSettingScreenBinding? = null
     private val binding get() = _binding!!
     private val counter: Counter by viewModels()
-    private val playerViewModel :playerViewModel by activityViewModels()
+    private val playerViewModel: PlayerViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +28,7 @@ class SettingScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSettingScreenBinding.inflate(inflater,container,false)
+        _binding = FragmentSettingScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,22 +38,25 @@ class SettingScreen : Fragment() {
             binding.text.text = value.toString()
 
 
-        binding.increment.setOnClickListener {
-            counter.increment()
+            binding.increment.setOnClickListener {
+                counter.increment()
             }
             binding.decrement.setOnClickListener {
                 if ((counter.number.value ?: 0) > 0) {
                     counter.decrement()
-                }
-                else
-                {
-                    Toast.makeText(requireContext(),"Number is Equal to Zero No Decremnt",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Number is Equal to Zero No Decremnt",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
         }
 
     }
+
     override fun onStart() {
         super.onStart()
         playerViewModel.initializePlayer(requireContext())

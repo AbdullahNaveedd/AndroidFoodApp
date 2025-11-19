@@ -6,7 +6,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.common.MediaItem
 
 
-class playerViewModel: ViewModel() {
+class PlayerViewModel : ViewModel() {
 
     var player: ExoPlayer? = null
     var playbackPosition = 0L
