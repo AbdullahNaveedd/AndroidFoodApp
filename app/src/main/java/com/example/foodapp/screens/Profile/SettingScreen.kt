@@ -39,6 +39,18 @@ class SettingScreen : Fragment() {
             binding.increment.setOnClickListener {
                 counter.increment()
             }
+            binding.btn1.setOnClickListener {
+                playerViewModel.switchVideo(Constant.VideoUrl)
+            }
+
+            binding.btn2.setOnClickListener {
+                playerViewModel.switchVideo(Constant.VideoUrl2)
+            }
+
+            binding.btn3.setOnClickListener {
+                playerViewModel.switchVideo(Constant.VideoUrl3)
+            }
+
             binding.decrement.setOnClickListener {
                 if ((counter.number.value ?: 0) > 0) {
                     counter.decrement()

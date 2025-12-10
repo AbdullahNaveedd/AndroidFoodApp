@@ -18,6 +18,7 @@ object Constant {
     const val BaseUrl = "https://api.imgbb.com/"
     const val ZeroValue = "Number is Equal to Zero No Decremnt"
     const val VideoUrl = "https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4"
-
+    const val VideoUrl2 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+    const val VideoUrl3 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
 
 }

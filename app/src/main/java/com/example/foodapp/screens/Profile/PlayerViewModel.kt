@@ -29,6 +29,16 @@ class PlayerViewModel : ViewModel() {
             }
         }
     }
+    fun switchVideo(url: String) {
+        player?.apply {
+            stop()
+            clearMediaItems()
+            setMediaItem(MediaItem.fromUri(url))
+            prepare()
+            playWhenReady = true
+        }
+    }
+
     fun pausePlayer() {
         player?.pause()
     }
