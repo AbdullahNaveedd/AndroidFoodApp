@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.GridLayoutManager
@@ -15,9 +16,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.example.foodapp.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 class Grid : Fragment() {
 
@@ -26,6 +29,7 @@ class Grid : Fragment() {
     private val sliderHandler = Handler(Looper.getMainLooper())
     private lateinit var sliderRunnable: Runnable
     private lateinit var ingredientAdapter: IngredientAdapter
+    private lateinit var bgImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,7 @@ class Grid : Fragment() {
 
         viewPager = view.findViewById(R.id.viewpager2)
         tabLayout = view.findViewById(R.id.tabLayout)
+        bgImage = view.findViewById(R.id.bgImage)
 
         val sliderItems = listOf(
             HomeModel(R.drawable.food1,"Chicken","$30" ,"Islmabad I-8 Markaz" ,"5.6" ,"(8 Reviews)" ,"Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages. Tender chicken pieces cooked in rich spices and herbs, bursting with flavor. A wholesome dish loved by all ages.", listOf(
@@ -112,6 +117,15 @@ class Grid : Fragment() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 val currentItem = sliderItems[position]
+
+                currentItem.imageResId?.let { imageRes ->
+                    Glide.with(view)
+                        .load(imageRes)
+                        .transform(BlurTransformation(10, 1))
+                        .into(bgImage)
+
+                }
+
                 view.findViewById<TextView>(R.id.foodtitle).text = currentItem.title
                 view.findViewById<TextView>(R.id.foodprice).text = currentItem.price
                 view.findViewById<TextView>(R.id.location).text = currentItem.location

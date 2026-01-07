@@ -18,15 +18,17 @@ class PlayerViewModel : ViewModel() {
     }
     fun initializePlayer(context: Context) {
         if (player == null) {
-            player = ExoPlayer.Builder(context).build().apply {
-                val mediaItem = MediaItem.fromUri(
-                    Constant.VideoUrl
-                )
-                setMediaItem(mediaItem)
-                prepare()
-                seekTo(playerPosition.value)
-                playWhenReady = true
-            }
+            player = ExoPlayer.Builder(context)
+                .setSeekBackIncrementMs(10_000)
+                .setSeekForwardIncrementMs(10_000)
+                .build()
+                .apply {
+                    val mediaItem = MediaItem.fromUri(Constant.VideoUrl)
+                    setMediaItem(mediaItem)
+                    prepare()
+                    seekTo(playerPosition.value)
+                    playWhenReady = true
+                }
         }
     }
     fun switchVideo(url: String) {
@@ -38,6 +40,7 @@ class PlayerViewModel : ViewModel() {
             playWhenReady = true
         }
     }
+
 
     fun pausePlayer() {
         player?.pause()

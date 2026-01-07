@@ -131,5 +131,15 @@
         android:name="com.example.foodapp.screens.Profile.SettingScreen"
         android:label="fragment_setting_screen"
         tools:layout="@layout/fragment_setting_screen" />
+    <dialog
+        android:id="@+id/fragmentbottomNav"
+        android:name="com.example.foodapp.screens.Profile.BottomNav"
+        android:label="fragment_bottom_nav"
+        tools:layout="@layout/fragment_bottom_nav" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.foodapp.screens.Profile.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
 
 </navigation>

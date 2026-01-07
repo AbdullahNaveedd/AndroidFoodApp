@@ -51,6 +51,15 @@ class SettingScreen : Fragment() {
                 playerViewModel.switchVideo(Constant.VideoUrl3)
             }
 
+            binding.tapLeft.setOnClickListener {
+                playerViewModel.player?.seekBack()
+            }
+
+            binding.tapRight.setOnClickListener {
+                playerViewModel.player?.seekForward()
+            }
+
+
             binding.decrement.setOnClickListener {
                 if ((counter.number.value ?: 0) > 0) {
                     counter.decrement()

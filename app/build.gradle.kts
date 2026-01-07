@@ -65,6 +65,8 @@ dependencies {
     implementation("com.facebook.android:facebook-login:16.1.3")
     implementation("androidx.media3:media3-exoplayer:1.8.0")
     implementation("androidx.media3:media3-ui:1.8.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("jp.wasabeef:glide-transformations:4.3.0")
 
 
     implementation(libs.androidx.core.ktx)

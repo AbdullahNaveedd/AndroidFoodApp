@@ -72,10 +72,14 @@ class Profile : Fragment() {
                    requireActivity().findNavController(R.id.nav_host_fragment).
                    navigate(R.id.profileInfoScreen)
                 }
-                if(item.title == "Settings")
-                {
-                requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.settingScreen)
+                if(item.title == "Settings") {
+                    requireActivity().findNavController(R.id.nav_host_fragment)
+                        .navigate(R.id.settingScreen)
                 }
+            if (item.title == "Number of Orders") {
+                requireActivity().findNavController(R.id.nav_host_fragment)
+                    .navigate(R.id.fragmentbottomNav)
+            }
 
 
         }
