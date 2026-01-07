@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".screens.Profile.BottomNav">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_design"
+            android:backgroundTint="@color/white"
+            android:padding="16dp"
+            android:layout_marginTop="5dp"
+            >
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is a Modal BottomSheet"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="10dp"
+                android:background="@drawable/btn_design"
+                android:backgroundTint="@color/bottom_nav_color"
+                android:drawableStart="@drawable/outline_autoplay_24"
+                android:drawablePadding="6dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="Gallery Images"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/heading" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
